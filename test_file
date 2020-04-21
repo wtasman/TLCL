@@ -2,7 +2,7 @@
 
 #test_file evaluates the status of a file
 
-FILE=~/.bashrc
+read -p "What file would you like to test?" FILE
 
 if [ -e "$FILE" ]; then
 	if [ -f "$FILE" ]; then

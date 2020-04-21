@@ -3,18 +3,26 @@
 # integer_in_range: determines if an integer is 
 # within a specified range of values.
 
-MIN_VAL=1
-MAX_VAL=100
+read -p "Enter the lower end of range > " MIN
 
-INT=50
+read -p "Enter the high end of range > " MAX
+
+if [[ "$MIN" =~ ^-?[0-9]+$ && "$MAX" =~ ^-?[0-9]+$ ]]; then
+	echo "Range is '$MIN' to '$MAX'."
+else 
+	echo "Either '$MIN' or '$MAX' are not integers." >&2
+	exit 1
+fi
+
+read -p "Enter the integer to be tested > " INT
 
 if [[ "$INT" =~ ^-?[0-9]+$ ]]; then
-	if [[ "$INT" -ge "$MIN_VAL" && "$INT" -le "$MAX_VAL" ]]; then
-		echo "$INT is within range of $MIN_VAL to $MAX_VAL."
+	if [[ "$INT" -ge "$MIN" && "$INT" -le "$MAX" ]]; then
+		echo "$INT is within range of $MIN to $MAX."
 	else
 		echo "$INT is out of range."
 	fi
 else
-	echo "INT is not an integer." >&2
+	echo "'$INT' is not an integer." >&2
 	exit 1
 fi
