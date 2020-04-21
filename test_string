@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# test_string: evaluate the value of a string
+
+read -p "Enter a string you would like tested \(YES, NO, or Maybe\)." ANSWER
+
+if [ -z "$ANSWER" ]; then
+	echo "The answer is YES."
+elif [ "$ANSWER" = "no" ]; then
+	echo "The answer is NO."
+elif [ "$ANSWER" = "maybe" ]; then
+	echo "The answer is MAYBE."
+else
+	echo "The answer is UNKNOWN."
+fi

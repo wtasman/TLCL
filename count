@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# while_count: display a series of numbers
+
+read -p "Start counting from?:" cnt
+if [[ ! "$cnt" =~ ^-?[0-9]+$ ]]; then
+	echo "'$cnt' is not an integer." >&2
+	exit 1
+fi
+
+read -p "Count to?:" end
+if [[ ! "$end" =~ ^-?[0-9]+$ ]]; then
+	echo "'$end' is not an integer." >&2
+	exit 1
+fi
+
+read -p "Count in increments of?:" inc
+if [[ ! "$inc" =~ ^-?[0-9]+$ ]]; then
+	echo "'$inc' is not an integer." >&2
+	exit 1
+fi
+
+until [[ "$cnt" -ge "$end" ]]; do
+	echo "$cnt"
+	cnt=$((cnt + inc))
+done
+
+if [[ "$cnt" != "$end" ]]; then
+	echo "$end"
+fi
+echo "Finished."
